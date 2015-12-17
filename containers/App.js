@@ -1,16 +1,16 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Counter from '../components/Counter'
-import * as CounterActions from '../actions/counter'
+import Brainstorming from '../components/Brainstorming'
+import * as BrainstormingActions from '../actions/brainstorming'
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    brainstorming: state.brainstorming
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch)
+  return bindActionCreators(BrainstormingActions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter)
+export default connect(mapStateToProps, mapDispatchToProps)(Brainstorming)
