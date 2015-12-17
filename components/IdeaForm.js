@@ -5,10 +5,7 @@ class IdeaForm extends Component {
     event.preventDefault();
 
     let form = event.target
-    this.props.onSubmit({
-      title: form.title.value,
-      text: form.text.value
-    })
+    this.props.actions.addIdea(form.title.value, form.text.value)
     this.resetForm(form)
   }
 
@@ -31,7 +28,7 @@ class IdeaForm extends Component {
 }
 
 IdeaForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  actions: PropTypes.object.isRequired
 }
 
 export default IdeaForm

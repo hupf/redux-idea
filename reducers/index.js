@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import brainstorming from './brainstorming'
+import ideas from './ideas'
 
 const rootReducer = combineReducers({
-  brainstorming
+  ideas
 })
 
 export default rootReducer

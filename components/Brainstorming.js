@@ -3,18 +3,14 @@ import IdeaForm from './IdeaForm'
 import Idea from './Idea'
 
 class Brainstorming extends Component {
-  handleSubmit(data) {
-    this.props.addIdea(data.title, data.text)
-  }
-
   render() {
-    const { brainstorming } = this.props
+    const { ideas, actions } = this.props
     return (
       <div>
         <h1>Brainstorming</h1>
-        <IdeaForm onSubmit={this.handleSubmit.bind(this)} />
-        {brainstorming.map(idea =>
-          <Idea idea={idea} />
+        <IdeaForm actions={actions} />
+        {ideas.map((idea, index) =>
+          <Idea idea={idea} index={index} actions={actions} />
         )}
       </div>
     )
@@ -22,7 +18,8 @@ class Brainstorming extends Component {
 }
 
 Brainstorming.propTypes = {
-  addIdea: PropTypes.func.isRequired,
+  ideas: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired
 }
 
 export default Brainstorming

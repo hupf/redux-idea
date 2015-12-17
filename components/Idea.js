@@ -2,18 +2,24 @@ import React, { Component, PropTypes } from 'react'
 
 class Idea extends Component {
   render() {
-    const { idea } = this.props
+    const { idea, index } = this.props
+    const { rateUpIdea } = this.props.actions
     return (
       <div>
-        <h2>{idea.title}</h2>
+        <h2>Idea {index}: {idea.title}</h2>
         <div>{idea.text}</div>
+        <div>
+          Ratings: {idea.ratings}
+          <button onClick={() => rateUpIdea(index)}>Rate up</button>
+        </div>
       </div>
     )
   }
 }
 
 Idea.propTypes = {
-  idea: PropTypes.func.isRequired
+  idea: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
 }
 
 export default Idea

@@ -1,16 +1,18 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Brainstorming from '../components/Brainstorming'
-import * as BrainstormingActions from '../actions/brainstorming'
+import * as IdeasActions from '../actions/ideas'
 
 function mapStateToProps(state) {
   return {
-    brainstorming: state.brainstorming
+    ideas: state.ideas
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(BrainstormingActions, dispatch)
+  return {
+    actions: bindActionCreators(IdeasActions, dispatch)
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Brainstorming)
