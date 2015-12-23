@@ -4,28 +4,34 @@ import Idea from './Idea'
 
 class Brainstorming extends Component {
   render() {
-    const { loading, ideas, actions } = this.props
+    const { loading, error, ideas, actions } = this.props
+    let loader, errorMessage, form;
+
+    if (loading) {
+      loader = <div>Loading...</div>
+    }
+
+    if (error) {
+      errorMessage = <div style={{color: 'red'}}>{error}</div>
+    }
+
+    if (!loading && !error) {
+      form = <IdeaForm actions={actions} />
+    }
 
     actions.fetchIdeasIfNeeded()
 
-    if (loading) {
-      return (
-        <div>
-          <h1>Brainstorming</h1>
-          <div>Loading...</div>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          <h1>Brainstorming</h1>
-          <IdeaForm actions={actions} />
-          {ideas.items.map((idea, index) =>
-            <Idea key={idea.id} idea={idea} index={index} actions={actions} />
-          )}
-        </div>
-      )
-    }
+    return (
+      <div>
+        <h1>Brainstorming</h1>
+        {loader}
+        {errorMessage}
+        {form}
+        {ideas.items.map((idea, index) =>
+          <Idea key={idea.id} idea={idea} actions={actions} />
+        )}
+      </div>
+    )
   }
 }
 
