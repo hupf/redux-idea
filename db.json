@@ -1,0 +1,16 @@
+{
+  "ideas": [
+    {
+      "id": 1,
+      "title": "Self opening beer can",
+      "text": "Opening beer cans is to tedious, they should open themselves.",
+      "ratings": 0
+    },
+    {
+      "id": 2,
+      "title": "Flying hat",
+      "text": "A hat that can fly around, for whatever reason.",
+      "ratings": 0
+    }
+  ]
+}

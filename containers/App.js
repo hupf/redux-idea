@@ -5,6 +5,7 @@ import * as IdeasActions from '../actions/ideas'
 
 function mapStateToProps(state) {
   return {
+    loading: state.ideas.loading,
     ideas: state.ideas
   }
 }

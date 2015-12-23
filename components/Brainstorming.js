@@ -4,21 +4,34 @@ import Idea from './Idea'
 
 class Brainstorming extends Component {
   render() {
-    const { ideas, actions } = this.props
-    return (
-      <div>
-        <h1>Brainstorming</h1>
-        <IdeaForm actions={actions} />
-        {ideas.map((idea, index) =>
-          <Idea idea={idea} index={index} actions={actions} />
-        )}
-      </div>
-    )
+    const { loading, ideas, actions } = this.props
+
+    actions.fetchIdeasIfNeeded()
+
+    if (loading) {
+      return (
+        <div>
+          <h1>Brainstorming</h1>
+          <div>Loading...</div>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <h1>Brainstorming</h1>
+          <IdeaForm actions={actions} />
+          {ideas.items.map((idea, index) =>
+            <Idea key={idea.id} idea={idea} index={index} actions={actions} />
+          )}
+        </div>
+      )
+    }
   }
 }
 
 Brainstorming.propTypes = {
-  ideas: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+  ideas: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 }
 

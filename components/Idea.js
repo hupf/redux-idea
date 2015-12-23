@@ -6,7 +6,7 @@ class Idea extends Component {
     const { rateUpIdea } = this.props.actions
     return (
       <div>
-        <h2>Idea {index}: {idea.title}</h2>
+        <h2>Idea {idea.id}: {idea.title}</h2>
         <div>{idea.text}</div>
         <div>
           Ratings: {idea.ratings}
